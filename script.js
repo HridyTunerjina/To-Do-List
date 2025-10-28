@@ -42,6 +42,14 @@ function render() {
   });
 
   taskCount.textContent = `${tasks.length} task${tasks.length === 1 ? '' : 's'}`;
+
+  if (tasks.length > 0 && tasks.every(t => t.done)) {
+    confetti({
+      particleCount: 150,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
+  }
 }
 
 
@@ -50,12 +58,12 @@ function addTask() {
   if (!text) return;
 
   if (editIndex !== null) {
-    
+
     tasks[editIndex].text = text;
     editIndex = null;
     addTaskBtn.textContent = 'Add';
   } else {
-    
+
     tasks.push({ text, done: false });
   }
 
@@ -85,9 +93,9 @@ taskList.addEventListener('click', (e) => {
   }
 
   if (e.target.matches('.edit-btn')) {
-    taskInput.value = tasks[i].text; 
+    taskInput.value = tasks[i].text;
     editIndex = i;
-    addTaskBtn.textContent = 'Update'; 
+    addTaskBtn.textContent = 'Update';
     taskInput.focus();
   }
 });
@@ -107,3 +115,4 @@ addTaskBtn.addEventListener('click', addTask);
 taskInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') addTask();
 });
+
