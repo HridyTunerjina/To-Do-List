@@ -3,7 +3,7 @@ body {
     padding: 0;
     height: 100vh;
     width: 100vw;
-    background-image: url('assets/bgimage.png');
+    background-image: url('assets/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
